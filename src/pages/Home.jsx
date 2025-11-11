@@ -49,10 +49,10 @@ const copy = {
       { value: '0%', label: 'Session uplift' },
     ],
     metricsBlock: {
-      badge: 'Why teams choose Chat4Mind',
+      badge: 'Why people choose Chat4Mind',
     },
     metricsParagraph:
-      'Dedicated clinical strategists and AI specialists partner with you to ensure successful onboarding, privacy alignment, and measurable outcomes within the first 90 days.',
+      '',
     featuresSection: {
       badge: 'Experience toolkit',
       heading: 'A professional stack for compassionate, data-informed care',
@@ -149,7 +149,7 @@ const copy = {
       badge: 'เหตุผลที่คนต่างไว้ใจ Chat4Mind',
     },
     metricsParagraph:
-      'ทีมที่ปรึกษาด้านคลินิกและผู้เชี่ยวชาญ AI ของเราพร้อมช่วยคุณตั้งค่าระบบให้มั่นใจเรื่องความเป็นส่วนตัวและผลลัพธ์ที่วัดได้ภายใน 90 วันแรก.',
+      '',
     featuresSection: {
       badge: 'ชุดเครื่องมือประสบการณ์',
       heading: 'โซลูชันมืออาชีพเพื่อการดูแลที่อ่อนโยนและใช้ข้อมูลประกอบ',
