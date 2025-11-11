@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { sendChatMessage } from '../lib/chatClient.js'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import DOMPurify from 'dompurify'
 
 const NAV_ACTIONS = [
   {
@@ -159,6 +160,12 @@ function ComponentsPage() {
   const [isLoginOpen, setIsLoginOpen] = useState(false)
   const [loginForm, setLoginForm] = useState({ email: '', password: '' })
   const [loginSubmitting, setLoginSubmitting] = useState(false)
+
+  const sanitize = (value) =>
+    DOMPurify.sanitize(value ?? '', {
+      ALLOWED_TAGS: ['a', 'strong', 'em', 'br', 'code', 'ul', 'ol', 'li'],
+      ALLOWED_ATTR: ['href', 'target', 'rel'],
+    })
 
   const t = translations[language]
 
@@ -423,8 +430,8 @@ function ComponentsPage() {
                       pulseStatus(t.status.promptLoaded)
                     }}
                   >
-                    <p className="text-sm font-semibold text-slate-800 truncate">{item.prompt}</p>
-                    <p className="text-xs text-slate-500 line-clamp-2">{item.reply}</p>
+                    <p className="text-sm font-semibold text-slate-800 truncate">{sanitize(item.prompt)}</p>
+                    <p className="text-xs text-slate-500 line-clamp-2">{sanitize(item.reply)}</p>
                     <span className="text-[10px] uppercase tracking-[0.35em] text-slate-400">
                       {new Intl.DateTimeFormat('en-US', {
                         month: 'short',
@@ -485,7 +492,7 @@ function ComponentsPage() {
                           : 'bg-white text-slate-800'
                       }`}
                     >
-                      <p>{message.text}</p>
+                      <p>{sanitize(message.text)}</p>
                       <span
                         className={`mt-2 block text-[10px] uppercase tracking-[0.3em] sm:mt-3 sm:text-[11px] ${
                           isUser ? 'text-emerald-100/90' : 'text-slate-400'
