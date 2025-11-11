@@ -1,16 +1,58 @@
-# React + Vite
+# Chat4Mind Studio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Chat4Mind Studio is a bilingual (TH/EN) React + Vite application that delivers a therapeutic-inspired chat experience. The project pairs a polished UI with server-driven AI responses, allowing visitors to journal moods, explore guided conversations, and review contributors.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19 + Vite 5
+- Tailwind utility classes & custom styling
+- AOS (Animate on Scroll)
+- Custom chat client fetching `/api/chat`
+- ESLint + modern npm toolchain
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+Visit `http://localhost:5173` (default Vite port).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Environment Variables
+
+Create a `.env` (or `.env.local`) and define:
+
+```
+VITE_GEMINI_API_KEY=your_google_gemini_key
+VITE_CHAT_API_BASE_URL=https://api.example.com (optional)
+VITE_CHAT_API_PATH=/api/chat (optional)
+```
+
+The chat client will call `/api/chat` relative to the frontend unless a base URL is supplied.
+
+## Production Build
+
+```bash
+npm run build
+npm run preview
+```
+
+The optimized bundle lands in `dist/`.
+
+## Deploying
+
+1. Build the frontend with `npm run build`.
+2. Host the `dist/` directory on your static provider or have Express serve it.
+3. Deploy the backend `/api/chat` endpoint (e.g., Express/Fly.io/Render) and set `VITE_CHAT_API_BASE_URL` accordingly.
+4. Configure environment variables on the hosting platform.
+
+## Contributors
+
+- **MellyTimes** — Lead Developer
+- **Memo** — Product Designer
+- **JO** — AI Engineer
+
+## License
+
+MIT © 2025 MellyDevs
