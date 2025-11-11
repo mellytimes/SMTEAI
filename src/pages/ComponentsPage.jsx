@@ -5,10 +5,134 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 const NAV_ACTIONS = [
-  { id: 'psychiatrist', label: 'Therapist', icon: '🧠', description: 'Warm, clinical reflections' },
-  { id: 'coach', label: 'Coach', icon: '🎯', description: 'Goal-focused accountability' },
-  { id: 'listener', label: 'Listener', icon: '🫶', description: 'Gentle, validating responses' },
+  {
+    id: 'psychiatrist',
+    icon: '🧠',
+    labels: {
+      EN: 'Therapist',
+      TH: 'นักบำบัด',
+    },
+    descriptions: {
+      EN: 'Warm, clinical reflections',
+      TH: 'บทสนทนาที่อบอุ่นและเข้าใจง่าย',
+    },
+  },
+  {
+    id: 'coach',
+    icon: '🎯',
+    labels: {
+      EN: 'Coach',
+      TH: 'โค้ช',
+    },
+    descriptions: {
+      EN: 'Goal-focused accountability',
+      TH: 'โฟกัสเป้าหมายและติดตามความคืบหน้า',
+    },
+  },
+  {
+    id: 'listener',
+    icon: '🫶',
+    labels: {
+      EN: 'Listener',
+      TH: 'ผู้รับฟัง',
+    },
+    descriptions: {
+      EN: 'Gentle, validating responses',
+      TH: 'ตอบกลับอย่างนุ่มนวลและรับฟังอย่างเข้าใจ',
+    },
+  },
 ]
+
+const translations = {
+  EN: {
+    buttons: {
+      newConversation: '+ New conversation',
+      home: 'Home',
+    },
+    status: {
+      ready: 'Guidance ready',
+      startedConversation: 'Started a new conversation',
+      assistantResponded: 'Assistant responded',
+      connectionError: 'Connection hiccup—please retry',
+      conversationCleared: 'Cleared recent conversations',
+      promptLoaded: 'Prompt loaded from recent conversation',
+      redirectingSignup: 'Redirecting to sign up (demo)',
+      loginDemo: 'Logged in (demo)',
+      assistantEngaged: (label) => `${label} assistant engaged`,
+    },
+    warning:
+      'If the assistant is not responding, please try again. If the problem persists, please contact support.',
+    conversations: {
+      title: 'Conversations',
+      clear: 'Clear',
+      empty: 'Your reflections will appear here so you can revisit or resume any thread.',
+    },
+    chat: {
+      workspaceSuffix: 'workspace',
+      subheading: 'Thoughtful exchanges designed to feel calm, private, and structured.',
+      liveSession: 'live session',
+      defaultResponse: 'I’m here and ready whenever you want to continue.',
+      assistantFailure: 'I couldn’t reach the service right now. Let’s try again in a moment.',
+      placeholder: 'Ask for a reflection, share a feeling, or request a summary...',
+      guideline:
+        'Chat4Mind may surface sensitive topics. For urgent support, contact local emergency services or your provider.',
+    },
+    modal: {
+      heading: 'Warm welcome',
+      signInLead: 'Sign in to sync preferences, cloud-save reflections, and collaborate with your care team.',
+      emailLabel: 'Email',
+      passwordLabel: 'Password',
+      login: 'Login',
+      signingIn: 'Signing in…',
+      needAccount: 'Need an account?',
+      createOne: 'Create one',
+    },
+  },
+  TH: {
+    buttons: {
+      newConversation: '+ เริ่มบทสนทนาใหม่',
+      home: 'หน้าหลัก',
+    },
+    status: {
+      ready: 'พร้อมให้คำแนะนำ',
+      startedConversation: 'เริ่มบทสนทนาใหม่แล้ว',
+      assistantResponded: 'ผู้ช่วยตอบกลับแล้ว',
+      connectionError: 'เกิดปัญหาการเชื่อมต่อ โปรดลองอีกครั้ง',
+      conversationCleared: 'ล้างประวัติสนทนาล่าสุดแล้ว',
+      promptLoaded: 'โหลดข้อความจากประวัติแล้ว',
+      redirectingSignup: 'กำลังไปหน้าสมัครสมาชิก (สาธิต)',
+      loginDemo: 'เข้าสู่ระบบ (สาธิต)',
+      assistantEngaged: (label) => `เปิดโหมด ${label}`,
+    },
+    warning:
+      'หากผู้ช่วยไม่ตอบกลับ โปรดลองอีกครั้ง หากปัญหายังคงอยู่โปรดติดต่อฝ่ายสนับสนุน',
+    conversations: {
+      title: 'ประวัติสนทนา',
+      clear: 'ล้าง',
+      empty: 'เมื่อคุณสนทนา ประวัติจะปรากฏให้กลับมาอ่านได้อีกครั้ง',
+    },
+    chat: {
+      workspaceSuffix: 'พื้นที่สนทนา',
+      subheading: 'บทสนทนาที่อบอุ่น เป็นส่วนตัว และมีโครงสร้างที่ชัดเจน',
+      liveSession: 'กำลังสนทนา',
+      defaultResponse: 'ฉันพร้อมตอบกลับเมื่อคุณพร้อมเสมอ',
+      assistantFailure: 'เชื่อมต่อกับเซิร์ฟเวอร์ไม่สำเร็จ ลองอีกครั้งในอีกสักครู่',
+      placeholder: 'เล่าสิ่งที่คุณรู้สึก หรือสิ่งที่อยากให้ฉันช่วยสรุป...',
+      guideline:
+        'Chat4Mind อาจกล่าวถึงหัวข้อที่ละเอียดอ่อน หากต้องการความช่วยเหลือเร่งด่วน โปรดติดต่อหน่วยงานฉุกเฉินหรือผู้เชี่ยวชาญใกล้ตัว',
+    },
+    modal: {
+      heading: 'ยินดีต้อนรับ',
+      signInLead: 'เข้าสู่ระบบเพื่อบันทึกบทสนทนาและซิงก์การตั้งค่าของคุณ',
+      emailLabel: 'อีเมล',
+      passwordLabel: 'รหัสผ่าน',
+      login: 'เข้าสู่ระบบ',
+      signingIn: 'กำลังเข้าสู่ระบบ…',
+      needAccount: 'ยังไม่มีบัญชี?',
+      createOne: 'สมัครสมาชิก',
+    },
+  },
+}
 
 const INITIAL_MESSAGES = [
   {
@@ -24,6 +148,7 @@ const INITIAL_MESSAGES = [
 
 function ComponentsPage() {
   const navigate = useNavigate()
+  const [language, setLanguage] = useState('EN')
   const [activeNav, setActiveNav] = useState(NAV_ACTIONS[0].id)
   const [messages, setMessages] = useState(INITIAL_MESSAGES)
   const [history, setHistory] = useState([])
@@ -35,6 +160,8 @@ function ComponentsPage() {
   const [loginForm, setLoginForm] = useState({ email: '', password: '' })
   const [loginSubmitting, setLoginSubmitting] = useState(false)
 
+  const t = translations[language]
+
   const hasDraft = draft.trim().length > 0
 
   const pulseStatus = (text) => {
@@ -45,15 +172,15 @@ function ComponentsPage() {
     statusTimeoutRef.current = window.setTimeout(() => setStatus(''), 2600)
   }
 
-  const activeNavLabel = useMemo(
-    () => NAV_ACTIONS.find((item) => item.id === activeNav)?.label ?? '',
-    [activeNav],
-  )
+  const activeNavLabel = useMemo(() => {
+    const action = NAV_ACTIONS.find((item) => item.id === activeNav)
+    return action ? action.labels[language] : ''
+  }, [activeNav, language])
 
   const handleStartNewChat = () => {
     setMessages(INITIAL_MESSAGES)
     setHistory([])
-    pulseStatus('Started a new conversation')
+    pulseStatus(t.status.startedConversation)
   }
 
   const handleSubmit = async (event) => {
@@ -92,7 +219,7 @@ function ComponentsPage() {
       const replyId = `assistant-${messageId}`
       const replyText =
         (data && (data.reply ?? data.message ?? data.text)) ||
-        'I’m here and ready whenever you want to continue.'
+        t.chat.defaultResponse
 
       setMessages((prev) => [
         ...prev,
@@ -117,7 +244,7 @@ function ComponentsPage() {
         },
         ...prev.slice(0, 14),
       ])
-      pulseStatus('Assistant responded')
+      pulseStatus(t.status.assistantResponded)
 
       window.requestAnimationFrame(() => {
         setMessages((prev) =>
@@ -138,14 +265,16 @@ function ComponentsPage() {
         {
           id: `assistant-error-${messageId}`,
           role: 'assistant',
-          text: 'I couldn’t reach the service right now. Let’s try again in a moment.',
+          text: t.chat.assistantFailure,
           timestamp: new Intl.DateTimeFormat('en-US', {
             hour: 'numeric',
             minute: '2-digit',
           }).format(new Date()),
         },
       ])
-      setStatus('Connection hiccup—please retry')
+      const connectionMessage = t.status.connectionError
+      setStatus(connectionMessage)
+      pulseStatus(connectionMessage)
     } finally {
       setIsSending(false)
     }
@@ -190,85 +319,94 @@ function ComponentsPage() {
     setLoginSubmitting(false)
     setIsLoginOpen(false)
     setLoginForm({ email: '', password: '' })
-    pulseStatus('Logged in (demo)')
+    pulseStatus(t.status.loginDemo)
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f7f3ff] via-white to-[#f6f8ff] text-slate-800">
+    <div className="flex min-h-screen flex-col bg-gradient-to-br from-[#f7f3ff] via-white to-[#f6f8ff] text-slate-800">
       <header className="sticky top-0 z-30 border-b border-white/60 bg-white/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
-          <div className="flex items-center gap-3">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
               type="button"
               onClick={handleStartNewChat}
-              className="rounded-full border border-violet-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-violet-400 hover:text-violet-900"
+              className="rounded-full border border-violet-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:border-violet-400 hover:text-violet-900 sm:px-4 sm:text-sm"
             >
-              + New conversation
+              {t.buttons.newConversation}
             </button>
-            <span className="hidden text-xs uppercase tracking-[0.5em] text-slate-400 sm:block">
-              {activeNavLabel} mode
+            <span className="hidden text-[11px] uppercase tracking-[0.5em] text-slate-400 sm:block">
+              {activeNavLabel}
             </span>
           </div>
 
-          <div className="flex items-center gap-2 text-sm text-slate-500">
+          <div className="flex items-center gap-2 text-xs text-slate-500 sm:text-sm">
             <span className="hidden items-center gap-2 rounded-full border border-violet-100 bg-white px-3 py-1 sm:flex">
               <span className="inline-block h-2 w-2 rounded-full bg-emerald-400" />
-              {status ? status : 'Guidance ready'}
+              {status ? status : t.status.ready}
             </span>
             <button
               type="button"
-              onClick={() => navigate('/')}
-              className="rounded-full border border-violet-100 px-4 py-2 text-sm font-semibold text-violet-700 transition hover:border-violet-200 hover:text-violet-900"
+              onClick={() => setLanguage((prev) => (prev === 'EN' ? 'TH' : 'EN'))}
+              className="rounded-full border border-violet-200 px-3 py-2 text-xs font-semibold text-violet-700 transition hover:border-violet-400 hover:text-violet-900 sm:px-4 sm:text-sm"
             >
-              Home
+              {language === 'EN' ? 'TH' : 'EN'}
+            </button>
+            <button
+              type="button"
+              onClick={() => navigate('/')}
+              className="rounded-full border border-violet-200 px-3 py-2 text-xs font-semibold text-violet-700 transition hover:border-violet-400 hover:text-violet-900 sm:px-4 sm:text-sm"
+            >
+              {t.buttons.home}
             </button>
           </div>
         </div>
       </header>
 
-      <div className="mx-auto grid max-w-6xl gap-6 px-4 py-8 lg:grid-cols-[260px_minmax(0,1fr)_260px] lg:px-6">
-        <div className="hide-scrollbar -mt-2 flex gap-3 overflow-x-auto rounded-3xl border border-violet-100 bg-white/80 p-3 shadow-sm shadow-violet-100 lg:hidden">
+      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-4 px-4 py-4 sm:gap-6 sm:px-6 sm:py-8 lg:grid lg:grid-cols-[260px_minmax(0,1fr)_260px]">
+        <div className="hide-scrollbar -mt-1 flex gap-3 overflow-x-auto rounded-3xl border border-violet-100 bg-white/80 p-3 shadow-sm shadow-violet-100 lg:hidden">
           {NAV_ACTIONS.map((action) => {
             const isActive = action.id === activeNav
+            const label = action.labels[language]
+            const description = action.descriptions[language]
             return (
               <button
                 key={action.id}
                 type="button"
                 onClick={() => {
                   setActiveNav(action.id)
-                  pulseStatus(`${action.label} assistant engaged`)
+                  pulseStatus(t.status.assistantEngaged(label))
                 }}
-                className={`flex min-w-[140px] flex-col items-start gap-1 rounded-2xl border px-4 py-3 text-left transition ${
+                className={`flex min-w-[150px] flex-col items-start gap-1 rounded-2xl border px-4 py-3 text-left text-xs transition ${
                   isActive
                     ? 'border-violet-300 bg-violet-50 text-violet-900 shadow-lg shadow-violet-100'
                     : 'border-violet-100 bg-white text-slate-700 hover:border-violet-200 hover:bg-violet-50'
                 }`}
               >
                 <span className="text-lg">{action.icon}</span>
-                <span className="text-sm font-semibold">{action.label}</span>
-                <p className="text-xs text-slate-500">{action.description}</p>
+                <span className="text-sm font-semibold">{label}</span>
+                <p className="text-xs text-slate-500">{description}</p>
               </button>
             )
           })}
         </div>
 
-        <aside className="flex h-full flex-col gap-4 rounded-3xl border border-violet-100 bg-white/70 p-5 shadow-lg shadow-violet-100 hide-scrollbar overflow-y-auto">
+        <aside className="hidden h-full flex-col gap-4 rounded-3xl border border-violet-100 bg-white/70 p-5 shadow-lg shadow-violet-100 hide-scrollbar overflow-y-auto lg:flex">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-slate-900">Conversations</h2>
+            <h2 className="text-sm font-semibold text-slate-900">{t.conversations.title}</h2>
             <button
               type="button"
               onClick={() => {
                 setHistory([])
-                pulseStatus('Cleared recent conversations')
+                pulseStatus(t.status.conversationCleared)
               }}
               className="text-xs text-slate-500 transition hover:text-violet-600"
             >
-              Clear
+              {t.conversations.clear}
             </button>
           </div>
           {history.length === 0 ? (
             <p className="rounded-2xl border border-violet-100 bg-white px-4 py-5 text-sm text-slate-500">
-              Your reflections will appear here so you can revisit or resume any thread.
+              {t.conversations.empty}
             </p>
           ) : (
             <ul className="flex flex-col gap-3">
@@ -282,7 +420,7 @@ function ComponentsPage() {
                     className="flex w-full flex-col gap-2 text-left"
                     onClick={() => {
                       setDraft(item.prompt)
-                      pulseStatus('Prompt loaded from recent conversation')
+                      pulseStatus(t.status.promptLoaded)
                     }}
                   >
                     <p className="text-sm font-semibold text-slate-800 truncate">{item.prompt}</p>
@@ -302,18 +440,28 @@ function ComponentsPage() {
           )}
         </aside>
 
-        <main className="flex flex-col overflow-hidden rounded-[2.5rem] border border-violet-100 bg-white/90 shadow-xl shadow-violet-100">
-          <div className="flex items-center justify-between border-b border-violet-100 px-8 py-6">
-            <div>
-              <h1 className="text-lg font-semibold text-slate-900">{activeNavLabel} workspace</h1>
-              <p className="text-sm text-slate-500">Thoughtful exchanges designed to feel calm, private, and structured.</p>
+        <main className="flex h-[calc(100vh-9rem)] flex-col overflow-hidden rounded-[2.5rem] border border-violet-100 bg-white/90 shadow-xl shadow-violet-100 sm:h-[calc(100vh-10rem)]">
+          <div className="border-b border-violet-100 px-5 py-4 sm:px-8 sm:py-6">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h1 className="text-base font-semibold text-slate-900 sm:text-lg">
+                  {activeNavLabel} {t.chat.workspaceSuffix}
+                </h1>
+                <p className="text-xs text-slate-500 sm:text-sm">{t.chat.subheading}</p>
+              </div>
+              <span className="rounded-full bg-emerald-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-emerald-600 sm:text-[11px]">
+                {t.chat.liveSession}
+              </span>
             </div>
-            <span className="rounded-full bg-emerald-500/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-emerald-600">
-              live session
-            </span>
+            <div className="mt-4 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-700 sm:text-sm">
+              <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-200/60 text-amber-700">
+                !
+              </span>
+              <p>{t.warning}</p>
+            </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto px-6 py-8 hide-scrollbar">
+          <div className="hide-scrollbar flex-1 overflow-y-auto px-4 py-6 sm:px-6 sm:py-8">
             <div className="mx-auto flex w-full max-w-3xl flex-col gap-4">
               {messages.map((message) => {
                 const isUser = message.role === 'user'
@@ -321,17 +469,17 @@ function ComponentsPage() {
                 return (
                   <div
                     key={message.id}
-                    className={`flex gap-4 transition-all duration-300 ${
+                    className={`flex gap-3 transition-all duration-300 ${
                       isUser ? 'justify-end' : 'justify-start'
                     } ${animate ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'}`}
                   >
                     {!isUser ? (
-                      <span className="mt-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/10 text-sm text-emerald-600">
+                      <span className="hidden h-8 w-8 items-center justify-center rounded-full bg-emerald-500/10 text-sm text-emerald-600 sm:inline-flex">
                         AI
                       </span>
                     ) : null}
                     <div
-                      className={`max-w-xl rounded-3xl px-5 py-4 text-sm leading-relaxed shadow-lg shadow-violet-100 transition-all duration-300 ${
+                      className={`max-w-[85%] rounded-3xl px-4 py-3 text-sm leading-relaxed shadow-lg shadow-violet-100 transition-all duration-300 sm:max-w-xl sm:px-5 sm:py-4 ${
                         isUser
                           ? 'bg-emerald-500 text-white'
                           : 'bg-white text-slate-800'
@@ -339,7 +487,7 @@ function ComponentsPage() {
                     >
                       <p>{message.text}</p>
                       <span
-                        className={`mt-3 block text-[11px] uppercase tracking-[0.3em] ${
+                        className={`mt-2 block text-[10px] uppercase tracking-[0.3em] sm:mt-3 sm:text-[11px] ${
                           isUser ? 'text-emerald-100/90' : 'text-slate-400'
                         }`}
                       >
@@ -352,18 +500,18 @@ function ComponentsPage() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="border-t border-violet-100 bg-white/80 px-6 py-6">
-            <div className="mx-auto flex w-full max-w-3xl items-end gap-3 rounded-2xl border border-violet-100 bg-white px-4 py-3 shadow-xl shadow-violet-100">
+          <form onSubmit={handleSubmit} className="border-t border-violet-100 bg-white/80 px-4 py-4 sm:px-6 sm:py-6 sticky bottom-0 left-0 right-0">
+            <div className="mx-auto flex w-full max-w-3xl items-end gap-3 rounded-2xl border border-violet-100 bg-white px-3 py-3 shadow-xl shadow-violet-100 sm:px-4">
               <textarea
                 name="message"
                 autoComplete="off"
                 spellCheck={false}
                 aria-label="Enter your message"
-                placeholder="Ask for a reflection, share a feeling, or request a summary..."
+                placeholder={t.chat.placeholder}
                 value={draft}
                 onChange={(event) => setDraft(event.target.value)}
                 rows={1}
-                className="max-h-36 w-full resize-none bg-transparent px-2 py-2 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none"
+                className="max-h-32 w-full resize-none bg-transparent px-2 py-2 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none"
               />
               <button
                 type="submit"
@@ -381,8 +529,7 @@ function ComponentsPage() {
               </button>
             </div>
             <p className="mx-auto mt-3 max-w-3xl text-center text-xs text-slate-500">
-              Chat4Mind may surface sensitive topics. For urgent support, contact local emergency services or your
-              provider.
+              {t.chat.guideline}
             </p>
           </form>
         </main>
@@ -395,13 +542,15 @@ function ComponentsPage() {
           <div className="flex flex-col gap-3">
             {NAV_ACTIONS.map((action) => {
               const isActive = action.id === activeNav
+              const label = action.labels[language]
+              const description = action.descriptions[language]
               return (
                 <button
                   key={action.id}
                   type="button"
                   onClick={() => {
                     setActiveNav(action.id)
-                    pulseStatus(`${action.label} assistant engaged`)
+                    pulseStatus(t.status.assistantEngaged(label))
                   }}
                   className={`flex flex-col gap-2 rounded-2xl border px-4 py-3 text-left transition ${
                     isActive
@@ -410,20 +559,11 @@ function ComponentsPage() {
                   }`}
                 >
                   <span className="text-lg">{action.icon}</span>
-                  <span className="text-sm font-semibold">{action.label}</span>
-                  <p className="text-xs text-slate-500">{action.description}</p>
+                  <span className="text-sm font-semibold">{label}</span>
+                  <p className="text-xs text-slate-500">{description}</p>
                 </button>
               )
             })}
-          </div>
-
-          <div className="mt-4 rounded-2xl border border-violet-100 bg-white px-4 py-4">
-            <h3 className="text-sm font-semibold text-slate-900">Session objectives</h3>
-            <ul className="mt-3 flex flex-col gap-2 text-xs text-slate-500">
-              <li>• Promote regulation and grounding after challenging interactions.</li>
-              <li>• Identify emotional patterns that emerged this week.</li>
-              <li>• Co-create next steps aligned with therapeutic goals.</li>
-            </ul>
           </div>
         </aside>
       </div>
@@ -436,12 +576,12 @@ function ComponentsPage() {
             onClick={() => setIsLoginOpen(false)}
           />
           <div
-            className="relative z-10 w-full max-w-md rounded-3xl border border-violet-100 bg-white p-8 text-slate-800 shadow-2xl shadow-violet-300 hide-scrollbar overflow-y-auto max-h-[90vh]"
+            className="relative z-10 w-full max-w-md rounded-3xl border border-violet-100 bg-white p-8 text-slate-800 shadow-2xl shadow-violet-300 hide-scrollbar max-h-[90vh] overflow-y-auto"
             data-aos="zoom-in"
             data-aos-delay="120"
           >
             <div className="flex items-center justify-between" data-aos="fade-down">
-              <h2 className="text-2xl font-semibold">Warm welcome</h2>
+              <h2 className="text-2xl font-semibold">{t.modal.heading}</h2>
               <button
                 type="button"
                 onClick={() => setIsLoginOpen(false)}
@@ -451,7 +591,7 @@ function ComponentsPage() {
               </button>
             </div>
             <p className="mt-2 text-sm text-slate-500" data-aos="fade-up" data-aos-delay="160">
-              Sign in to sync preferences, cloud-save reflections, and collaborate with your care team.
+              {t.modal.signInLead}
             </p>
             <form
               onSubmit={handleLoginSubmit}
@@ -460,7 +600,7 @@ function ComponentsPage() {
               data-aos-delay="200"
             >
               <label className="flex flex-col gap-2 text-left text-sm font-medium text-slate-700">
-                Email
+                {t.modal.emailLabel}
                 <input
                   required
                   type="email"
@@ -477,7 +617,7 @@ function ComponentsPage() {
                 />
               </label>
               <label className="flex flex-col gap-2 text-left text-sm font-medium text-slate-700">
-                Password
+                {t.modal.passwordLabel}
                 <input
                   required
                   type="password"
@@ -503,25 +643,38 @@ function ComponentsPage() {
                 data-aos="fade-up"
                 data-aos-delay="240"
               >
-                {loginSubmitting ? 'Signing in…' : 'Login'}
+                {loginSubmitting ? t.modal.signingIn : t.modal.login}
               </button>
             </form>
             <p className="mt-4 text-center text-sm text-slate-500" data-aos="fade-up" data-aos-delay="280">
-              Need an account?{' '}
+              {t.modal.needAccount}{' '}
               <button
                 type="button"
                 className="font-semibold text-violet-600 underline-offset-2 transition hover:text-violet-800 focus:outline-none focus:ring-2 focus:ring-violet-200"
                 onClick={() => {
                   setIsLoginOpen(false)
-                  pulseStatus('Redirecting to sign up (demo)')
+                  pulseStatus(t.status.redirectingSignup)
                 }}
               >
-                Create one
+                {t.modal.createOne}
               </button>
             </p>
           </div>
         </div>
       ) : null}
+
+      <div
+        role="status"
+        aria-live="polite"
+        className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2 transform px-4"
+      >
+        {status ? (
+          <span className="inline-flex items-center gap-2 rounded-full bg-slate-900/90 px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-slate-500/30 sm:text-sm">
+            <span className="inline-block h-2 w-2 rounded-full bg-emerald-400" />
+            {status}
+          </span>
+        ) : null}
+      </div>
     </div>
   )
 }
