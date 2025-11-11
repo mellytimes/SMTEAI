@@ -4,7 +4,6 @@ import Home from './pages/Home.jsx'
 import ComponentsPage from './pages/ComponentsPage.jsx'
 import NotFound from './components/NotFound.jsx'
 import ChangeLog from './components/ChangeLog.jsx'
-import { SpeedInsights } from '@vercel/speed-insights/react'
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
         <Route path="/changelog" element={<ChangeLog />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <SpeedInsights />
     </>
   )
 }

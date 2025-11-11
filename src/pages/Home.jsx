@@ -178,7 +178,7 @@ const copy = {
       },
     ],
     testimonialsSection: {
-      badge: 'เสียงจากผู้ใช้',
+      badge: 'ความเห็นจากผู้ใช้',
       heading: 'ออกแบบร่วมกับนักบำบัด และเป็นที่รักของผู้ใช้',
       paragraph:
         'ไม่ว่าคุณจะเป็นผู้ดูแลหรือผู้รับการดูแล Chat4Mind ช่วยให้การเดินทางก้าวต่ออย่างนุ่มนวลและครอบคลุม.',
@@ -419,7 +419,7 @@ function Home() {
 
           <div className="relative flex flex-col gap-10 lg:flex-row lg:items-center">
             <div className="flex-1 space-y-8">
-              <span className="inline-flex items-center gap-2 rounded-full bg-violet-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-violet-700">
+              <span className="inline-flex items-center gap-2 rounded-full bg-violet-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.1em] text-violet-700">
                 {t.hero.badge}
               </span>
               <TypingText
@@ -452,7 +452,7 @@ function Home() {
             </div>
 
             <div className="flex flex-1 flex-col gap-6 rounded-[2rem] border border-violet-100 bg-white/80 p-6 shadow-lg shadow-violet-100 backdrop-blur-sm">
-              <p className="text-sm uppercase tracking-[0.4em] text-slate-400">{t.metricsBlock.badge}</p>
+              <p className="text-sm uppercase tracking-[0.1em] text-slate-400">{t.metricsBlock.badge}</p>
               <div className="grid gap-4 sm:grid-cols-3">
                 {t.metrics.map((metric) => (
                   <div key={metric.label} className="rounded-2xl bg-white px-5 py-4 text-left shadow-sm">
@@ -468,9 +468,6 @@ function Home() {
 
         <section className="space-y-8">
           <div className="flex flex-col gap-4 text-center">
-            <span className="mx-auto inline-flex items-center gap-2 rounded-full bg-violet-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.45em] text-violet-600">
-              {t.featuresSection.badge}
-            </span>
             <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">{t.featuresSection.heading}</h2>
             <p className="mx-auto max-w-3xl text-base text-slate-600">{t.featuresSection.paragraph}</p>
           </div>
@@ -491,7 +488,7 @@ function Home() {
 
         <section className="rounded-[2.5rem] border border-white/60 bg-white/80 p-8 shadow-xl shadow-violet-100 backdrop-blur sm:p-10">
           <div className="flex flex-col gap-6 text-center">
-            <span className="mx-auto inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-1 text-xs font-semibold uppercase tracking-[0.5em] text-white">
+            <span className="mx-auto inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-1 text-xs font-semibold uppercase tracking-[0.1em] text-white">
               {t.testimonialsSection.badge}
             </span>
             <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">{t.testimonialsSection.heading}</h2>
@@ -507,7 +504,7 @@ function Home() {
                 <p className="text-sm leading-relaxed text-slate-600">“{testimonial.quote}”</p>
                 <footer className="text-sm font-semibold text-slate-900">
                   {testimonial.name}
-                  <span className="block text-xs font-normal uppercase tracking-[0.35em] text-slate-400">
+                  <span className="block text-xs font-normal uppercase tracking-[0.1em] text-slate-400">
                     {testimonial.role}
                   </span>
                 </footer>
@@ -519,7 +516,7 @@ function Home() {
         <section className="overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-violet-700 via-indigo-600 to-blue-500 px-6 py-8 text-white shadow-xl shadow-violet-200 sm:px-10 sm:py-10">
           <div className="flex flex-col gap-6 text-center sm:text-left sm:items-center sm:justify-between sm:flex-row">
             <div className="max-w-2xl space-y-4">
-              <p className="text-xs uppercase tracking-[0.5em] text-white/70">{t.cta.badge}</p>
+              <p className="text-xs uppercase tracking-[0.1em] text-white/70">{t.cta.badge}</p>
               <h3 className="text-3xl font-semibold sm:text-4xl">{t.cta.heading}</h3>
               <p className="text-sm text-white/80">{t.cta.paragraph}</p>
             </div>
@@ -537,7 +534,7 @@ function Home() {
         <section className="overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-violet-700 via-indigo-600 to-blue-500 px-6 py-8 text-white shadow-xl shadow-violet-200 sm:px-10 sm:py-10">
           <div className="flex flex-col gap-6 text-center sm:text-left sm:items-center sm:justify-between sm:flex-row">
             <div className="max-w-2xl space-y-4">
-              <p className="text-xs uppercase tracking-[0.5em] text-white/70">{t.contributorsSection.badge}</p>
+              <p className="text-xs uppercase tracking-[0.1em] text-white/70">{t.contributorsSection.badge}</p>
               <h3 className="text-3xl font-semibold sm:text-4xl">{t.contributorsSection.heading}</h3>
               <p className="text-sm text-white/80">{t.contributorsSection.description}</p>
             </div>

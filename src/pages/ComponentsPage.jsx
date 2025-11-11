@@ -369,7 +369,7 @@ function ComponentsPage() {
         </div>
       </header>
 
-      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-4 px-4 py-4 sm:gap-6 sm:px-6 sm:py-8 lg:grid lg:grid-cols-[260px_minmax(0,1fr)_260px]">
+      <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-4 px-4 py-4 sm:gap-6 sm:px-6 sm:py-8 lg:grid lg:grid-cols-[280px_minmax(0,1fr)_280px]">
         <div className="hide-scrollbar -mt-1 flex gap-3 overflow-x-auto rounded-3xl border border-violet-100 bg-white/80 p-3 shadow-sm shadow-violet-100 lg:hidden">
           {NAV_ACTIONS.map((action) => {
             const isActive = action.id === activeNav
@@ -447,7 +447,7 @@ function ComponentsPage() {
           )}
         </aside>
 
-        <main className="flex h-[calc(100vh-9rem)] flex-col overflow-hidden rounded-[2.5rem] border border-violet-100 bg-white/90 shadow-xl shadow-violet-100 sm:h-[calc(100vh-10rem)]">
+        <main className="flex h-[calc(100vh-7.5rem)] flex-col overflow-hidden rounded-[2.5rem] border border-violet-100 bg-white/90 shadow-xl shadow-violet-100 sm:h-[calc(100vh-8.5rem)]">
           <div className="border-b border-violet-100 px-5 py-4 sm:px-8 sm:py-6">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
@@ -456,7 +456,7 @@ function ComponentsPage() {
                 </h1>
                 <p className="text-xs text-slate-500 sm:text-sm">{t.chat.subheading}</p>
               </div>
-              <span className="rounded-full bg-emerald-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-emerald-600 sm:text-[11px]">
+              <span className="rounded-full bg-blue-500/15 px-1 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-cyan-600 sm:text-[11px]">
                 {t.chat.liveSession}
               </span>
             </div>
@@ -468,8 +468,8 @@ function ComponentsPage() {
             </div>
           </div>
 
-          <div className="hide-scrollbar flex-1 overflow-y-auto px-4 py-6 sm:px-6 sm:py-8">
-            <div className="mx-auto flex w-full max-w-3xl flex-col gap-4">
+          <div className="hide-scrollbar flex-1 overflow-y-auto px-4 py-5 sm:px-6 sm:py-8">
+            <div className="mx-auto flex w-full max-w-4xl flex-col gap-5">
               {messages.map((message) => {
                 const isUser = message.role === 'user'
                 const animate = message.animate
@@ -481,20 +481,20 @@ function ComponentsPage() {
                     } ${animate ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'}`}
                   >
                     {!isUser ? (
-                      <span className="hidden h-8 w-8 items-center justify-center rounded-full bg-emerald-500/10 text-sm text-emerald-600 sm:inline-flex">
-                        AI
+                      <span className="hidden h-10 w-10 items-center justify-center rounded-full bg-cyan-500/10 text-sm text-blue-600 sm:inline-flex">
+                        SORA
                       </span>
                     ) : null}
                     <div
-                      className={`max-w-[85%] rounded-3xl px-4 py-3 text-sm leading-relaxed shadow-lg shadow-violet-100 transition-all duration-300 sm:max-w-xl sm:px-5 sm:py-4 ${
+                      className={`max-w-[90%] rounded-3xl px-5 py-4 text-sm leading-relaxed shadow-lg shadow-violet-100 transition-all duration-300 sm:max-w-2xl sm:px-6 sm:py-5 ${
                         isUser
-                          ? 'bg-emerald-500 text-white'
+                          ? 'bg-blue-500 text-white'
                           : 'bg-white text-slate-800'
                       }`}
                     >
                       <p>{sanitize(message.text)}</p>
                       <span
-                        className={`mt-2 block text-[10px] uppercase tracking-[0.3em] sm:mt-3 sm:text-[11px] ${
+                        className={`mt-3 block text-[10px] uppercase tracking-[0.3em] sm:text-[11px] ${
                           isUser ? 'text-emerald-100/90' : 'text-slate-400'
                         }`}
                       >
@@ -507,8 +507,8 @@ function ComponentsPage() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="border-t border-violet-100 bg-white/80 px-4 py-4 sm:px-6 sm:py-6 sticky bottom-0 left-0 right-0">
-            <div className="mx-auto flex w-full max-w-3xl items-end gap-3 rounded-2xl border border-violet-100 bg-white px-3 py-3 shadow-xl shadow-violet-100 sm:px-4">
+          <form onSubmit={handleSubmit} className="border-t border-violet-100 bg-white/85 px-4 py-4 sm:px-6 sm:py-6 sticky bottom-0 left-0 right-0">
+            <div className="mx-auto flex w-full max-w-3xl items-end gap-3 rounded-3xl border border-violet-100 bg-white px-4 py-3 shadow-xl shadow-violet-100 sm:px-5">
               <textarea
                 name="message"
                 autoComplete="off"
@@ -517,8 +517,16 @@ function ComponentsPage() {
                 placeholder={t.chat.placeholder}
                 value={draft}
                 onChange={(event) => setDraft(event.target.value)}
-                rows={1}
-                className="max-h-32 w-full resize-none bg-transparent px-2 py-2 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none"
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' && !event.shiftKey) {
+                    event.preventDefault()
+                    if (hasDraft && !isSending) {
+                      handleSubmit(event)
+                    }
+                  }
+                }}
+                rows={2}
+                className="max-h-40 min-h-[52px] w-full resize-none bg-transparent px-2 py-2 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none"
               />
               <button
                 type="submit"
