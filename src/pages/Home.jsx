@@ -26,7 +26,7 @@ const contributors = [
 const copy = {
   EN: {
     nav: {
-      launch: 'Launch studio',
+      launch: 'Launch Chat',
       release: 'Release journal',
       home: 'Home',
       menu: 'Menu',
@@ -40,7 +40,7 @@ const copy = {
       ],
       paragraph:
         'Capture moods with nuance, surface patterns with context, and offer warmth between sessions. Chat4Mind blends gentle language coaching, rich analytics, and collaborative tooling to help teams deliver care that feels human at every step.',
-      ctaPrimary: 'Launch studio',
+      ctaPrimary: 'Launch Chat',
       ctaSecondary: 'View release journal',
     },
     metrics: [
@@ -110,7 +110,7 @@ const copy = {
       heading: 'Start your gentle AI journey today',
       paragraph:
         'Book a discovery session with our experience team, or explore the studio sandbox to witness the guided reflections in action.',
-      button: 'Explore studio',
+      button: 'Explore Chat',
     },
     contributorsSection: {
       badge: 'About us',
@@ -123,7 +123,7 @@ const copy = {
   },
   TH: {
     nav: {
-      launch: 'เปิดสตูดิโอ',
+      launch: 'เปิดแชท',
       release: 'บันทึกการปรับปรุง',
       home: 'หน้าหลัก',
       menu: 'เมนู',
