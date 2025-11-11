@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import TypingText from '../components/ui/shadcn-io/typing-text/index.jsx'
+import favicon from '../images/android-chrome-512x512.png'
 
 const contributors = [
   {
@@ -326,9 +327,11 @@ function Home() {
         >
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-500 text-base font-semibold text-white sm:h-12 sm:w-12 sm:text-lg">
-                CM
-              </span>
+              <img
+                src={favicon}
+                alt="Chat4Mind icon"
+                className="h-10 w-10 rounded-2xl sm:h-12 sm:w-12"
+              />
               <div>
                 <p className="text-[10px] uppercase tracking-[0.5em] text-slate-500 sm:text-xs">Mental wellness platform</p>
                 <h1 className="text-base font-semibold text-slate-900 sm:text-lg">Chat4Mind Studio</h1>
