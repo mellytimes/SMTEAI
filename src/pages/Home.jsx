@@ -222,7 +222,7 @@ const copy = {
 
 function Home() {
   const navigate = useNavigate()
-  const [language, setLanguage] = useState('EN')
+  const [language, setLanguage] = useState('TH')
   const [isLoading, setIsLoading] = useState(true)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 

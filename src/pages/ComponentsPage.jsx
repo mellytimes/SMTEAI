@@ -148,7 +148,7 @@ const INITIAL_MESSAGES = [
 
 function ComponentsPage() {
   const navigate = useNavigate()
-  const [language, setLanguage] = useState('EN')
+  const [language, setLanguage] = useState('TH')
   const [activeNav, setActiveNav] = useState(NAV_ACTIONS[0].id)
   const [messages, setMessages] = useState(INITIAL_MESSAGES)
   const [history, setHistory] = useState([])
