@@ -334,7 +334,7 @@ function Home() {
                 className="h-10 w-10 rounded-2xl sm:h-12 sm:w-12"
               />
               <div>
-                <p className="text-[10px] uppercase tracking-[0.5em] text-slate-500 sm:text-xs">Mental wellness platform</p>
+                <p className="text-[10px] uppercase tracking-[0.5em] text-slate-500 sm:text-xs">Mental awareness wellness platform</p>
                 <h1 className="text-base font-semibold text-slate-900 sm:text-lg">Chat4Mind Studio</h1>
               </div>
             </div>
