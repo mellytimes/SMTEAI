@@ -156,6 +156,7 @@ function ComponentsPage() {
   const [history, setHistory] = useState([])
   const [draft, setDraft] = useState('')
   const [isSending, setIsSending] = useState(false)
+  const [isAssistantTyping, setIsAssistantTyping] = useState(false)
   const [status, setStatus] = useState('')
   const statusTimeoutRef = useRef(null)
   const [isLoginOpen, setIsLoginOpen] = useState(false)
@@ -198,6 +199,7 @@ function ComponentsPage() {
     const sanitizedDraft = draft.trim().replace(/\s+/g, ' ')
     setIsSending(true)
     setDraft('')
+    setIsAssistantTyping(true)
 
     const messageId =
       typeof crypto !== 'undefined' && crypto.randomUUID
@@ -252,6 +254,7 @@ function ComponentsPage() {
         },
         ...prev.slice(0, 14),
       ])
+      setIsAssistantTyping(false)
       pulseStatus(t.status.assistantResponded)
 
       window.requestAnimationFrame(() => {
@@ -268,6 +271,7 @@ function ComponentsPage() {
       })
     } catch (error) {
       console.error(error)
+      setIsAssistantTyping(false)
       setMessages((prev) => [
         ...prev,
         {
@@ -284,6 +288,7 @@ function ComponentsPage() {
       setStatus(connectionMessage)
       pulseStatus(connectionMessage)
     } finally {
+      setIsAssistantTyping(false)
       setIsSending(false)
     }
   }
@@ -521,6 +526,29 @@ function ComponentsPage() {
                   </div>
                 )
               })}
+              {isAssistantTyping ? (
+                <div className="flex gap-3">
+                  <span className="hidden h-10 w-10 items-center justify-center rounded-full bg-cyan-500/10 text-sm text-blue-600 sm:inline-flex">
+                    SORA
+                  </span>
+                  <div className="max-w-[80%] rounded-3xl bg-white px-5 py-4 text-sm text-slate-500 shadow-lg shadow-violet-100 sm:max-w-sm sm:px-6">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+                        {language === 'EN' ? 'Typing' : 'กำลังพิมพ์'}
+                      </span>
+                      <div className="flex items-center gap-1">
+                        {[0, 1, 2].map((dot) => (
+                          <span
+                            key={dot}
+                            className="h-2 w-2 rounded-full bg-slate-300 animate-bounce"
+                            style={{ animationDelay: `${dot * 0.15}s` }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : null}
             </div>
           </div>
 
