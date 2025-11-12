@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import TypingText from '../components/ui/shadcn-io/typing-text/index.jsx'
-import favicon from '../images/android-chrome-512x512.png'
+import favicon from '../images/web-app-manifest-512x512.png'
 
 
 const contributors = [
