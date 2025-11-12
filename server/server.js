@@ -7,6 +7,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import cors from 'cors'
 import authRoutes from './routes/auth.js'
+import fs from 'node:fs'
 
 dotenv.config()
 
@@ -32,8 +33,32 @@ app.use('/auth', authRoutes)
 // Health
 app.get('/health', (req, res) => res.json({ status: 'ok' }))
 
-// Static (if you serve a built frontend later)
-app.use(express.static(path.resolve(__dirname, '../public')))
+const distPath = path.resolve(__dirname, '../dist')
+const publicPath = path.resolve(__dirname, '../public')
+const rootIndexPath = path.resolve(__dirname, '../index.html')
+
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath))
+}
+
+if (fs.existsSync(publicPath)) {
+  app.use(express.static(publicPath))
+}
+
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/auth') || req.path.startsWith('/api')) {
+    return next()
+  }
+
+  const distIndex = path.join(distPath, 'index.html')
+  const fallbackIndex = fs.existsSync(distIndex) ? distIndex : rootIndexPath
+
+  if (!fs.existsSync(fallbackIndex)) {
+    return res.status(404).send('index.html not found. Did you run "npm run build"?')
+  }
+
+  return res.sendFile(fallbackIndex)
+})
 
 const connectDatabase = async () => {
   const uri = process.env.MONGODB_URI ?? 'mongodb://localhost:27017/chat4mind'

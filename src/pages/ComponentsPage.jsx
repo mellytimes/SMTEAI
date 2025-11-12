@@ -150,6 +150,7 @@ const INITIAL_MESSAGES = [
 function ComponentsPage() {
   const navigate = useNavigate()
   const [language, setLanguage] = useState('TH')
+  const [isLoading, setIsLoading] = useState(true)
   const [activeNav, setActiveNav] = useState(NAV_ACTIONS[0].id)
   const [messages, setMessages] = useState(INITIAL_MESSAGES)
   const [history, setHistory] = useState([])
@@ -297,6 +298,11 @@ function ComponentsPage() {
   )
 
   useEffect(() => {
+    const timeout = window.setTimeout(() => setIsLoading(false), 1600)
+    return () => window.clearTimeout(timeout)
+  }, [])
+
+  useEffect(() => {
     AOS.init({
       duration: 700,
       once: true,
@@ -331,6 +337,17 @@ function ComponentsPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-br from-[#f7f3ff] via-white to-[#f6f8ff] text-slate-800">
+      {isLoading ? (
+        <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-sm">
+          <div className="flex flex-col items-center gap-6 rounded-3xl border border-white/10 bg-white/10 px-8 py-8 text-white shadow-2xl shadow-violet-900/20 sm:px-12 sm:py-10">
+            <span className="inline-flex h-12 w-12 animate-spin items-center justify-center rounded-full border-4 border-white/50 border-t-transparent sm:h-14 sm:w-14" />
+            <div className="space-y-2 text-center">
+              <p className="text-xs uppercase tracking-[0.6em] text-violet-200 sm:text-sm">chat4mind</p>
+              <p className="text-base font-semibold text-white sm:text-lg">Loading your calm space…</p>
+            </div>
+          </div>
+        </div>
+      ) : null}
       <header className="sticky top-0 z-30 border-b border-white/60 bg-white/90 backdrop-blur">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
           <div className="flex items-center gap-2 sm:gap-3">
