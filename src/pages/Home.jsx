@@ -44,14 +44,6 @@ const copy = {
       ctaPrimary: 'Launch Chat',
       ctaSecondary: 'View release journal',
     },
-    metrics: [
-      { value: '0', label: 'Reflections logged' },
-      { value: '0', label: 'Clinicians partnered' },
-      { value: '0%', label: 'Session uplift' },
-    ],
-    metricsBlock: {
-      badge: 'Why people choose Chat4Mind',
-    },
     metricsParagraph:
       '',
     featuresSection: {
@@ -140,14 +132,6 @@ const copy = {
         'วิเคราะห์รูปแบบอย่างมีบริบท และมอบความอบอุ่นระหว่างช่วงห่างของการบำบัด Chat4Mind ผสานการโค้ชด้วยภาษาอันนุ่มนวล การวิเคราะห์เชิงลึก และเครื่องมือสำหรับทีม เพื่อสร้างการดูแลที่สัมผัสถึงได้จริงทุกครั้ง.',
       ctaPrimary: 'เปิดสตูดิโอ',
       ctaSecondary: 'ดูบันทึกการปรับปรุง',
-    },
-    metrics: [
-      { value: '0', label: 'จำนวนบทสนทนา' },
-      { value: '0', label: 'ผู้เชี่ยวชาญร่วมมือ' },
-      { value: '0%', label: 'การพัฒนาช่วงสนทนา' },
-    ],
-    metricsBlock: {
-      badge: 'เหตุผลที่คนต่างไว้ใจ Chat4Mind',
     },
     metricsParagraph:
       '',
@@ -254,11 +238,6 @@ function Home() {
 
   const closeMobileMenu = () => setMobileMenuOpen(false)
 
-  const metrics = [
-    { label: 'Reflections logged', value: '0' },
-    { label: 'Clinicians partnered', value: '0' },
-    { label: 'Avg. session uplift', value: '0%' },
-  ]
 
   const featureHighlights = [
     {
@@ -419,9 +398,6 @@ function Home() {
 
           <div className="relative flex flex-col gap-10 lg:flex-row lg:items-center">
             <div className="flex-1 space-y-8">
-              <span className="inline-flex items-center gap-2 rounded-full bg-violet-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.1em] text-violet-700">
-                {t.hero.badge}
-              </span>
               <TypingText
                 data-aos="fade-up"
                 text={t.hero.typingText}
@@ -451,18 +427,6 @@ function Home() {
               </div>
             </div>
 
-            <div className="flex flex-1 flex-col gap-6 rounded-[2rem] border border-violet-100 bg-white/80 p-6 shadow-lg shadow-violet-100 backdrop-blur-sm">
-              <p className="text-sm uppercase tracking-[0.1em] text-slate-400">{t.metricsBlock.badge}</p>
-              <div className="grid gap-4 sm:grid-cols-3">
-                {t.metrics.map((metric) => (
-                  <div key={metric.label} className="rounded-2xl bg-white px-5 py-4 text-left shadow-sm">
-                    <p className="text-2xl font-semibold text-slate-900">{metric.value}</p>
-                    <p className="mt-2 text-xs uppercase tracking-[0.25em] text-slate-500">{metric.label}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="text-sm text-slate-500">{t.metricsParagraph}</p>
-            </div>
           </div>
         </section>
 
