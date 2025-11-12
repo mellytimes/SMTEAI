@@ -43,7 +43,7 @@ const NAV_ACTIONS = [
     },
   },
   {
-    id: 'Goofy',
+    id: 'goofy',
     icon: '😂',
     labels: {
       EN: 'Goofy',
@@ -58,6 +58,9 @@ const NAV_ACTIONS = [
 
 const translations = {
   EN: {
+    badges: {
+      limitedTime: 'Limited time',
+    },
     buttons: {
       newConversation: '+ New conversation',
       home: 'Home',
@@ -102,6 +105,9 @@ const translations = {
     },
   },
   TH: {
+    badges: {
+      limitedTime: 'จำกัดเวลา',
+    },
     buttons: {
       newConversation: '+ เริ่มบทสนทนาใหม่',
       home: 'หน้าหลัก',
@@ -425,6 +431,11 @@ function ComponentsPage() {
               >
                 <span className="text-lg">{action.icon}</span>
                 <span className="text-sm font-semibold">{label}</span>
+                {action.id === 'goofy' ? (
+                  <span className="rounded-full bg-rose-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-rose-600">
+                    {t.badges.limitedTime}
+                  </span>
+                ) : null}
                 <p className="text-xs text-slate-500">{description}</p>
               </button>
             )
@@ -546,7 +557,7 @@ function ComponentsPage() {
                   <div className="max-w-[80%] rounded-3xl bg-white px-5 py-4 text-sm text-slate-500 shadow-lg shadow-violet-100 sm:max-w-sm sm:px-6">
                     <div className="flex items-center gap-2">
                       <span className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-                        {language === 'EN' ? '' : ''}
+                        {language === 'EN' ? 'Typing' : 'กำลังพิมพ์'}
                       </span>
                       <div className="flex items-center gap-1">
                         {[0, 1, 2].map((dot) => (
@@ -632,6 +643,11 @@ function ComponentsPage() {
                 >
                   <span className="text-lg">{action.icon}</span>
                   <span className="text-sm font-semibold">{label}</span>
+                  {action.id === 'goofy' ? (
+                    <span className="w-fit rounded-full bg-rose-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-rose-600">
+                      {t.badges.limitedTime}
+                    </span>
+                  ) : null}
                   <p className="text-xs text-slate-500">{description}</p>
                 </button>
               )

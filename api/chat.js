@@ -92,7 +92,7 @@ export default async function handler(req, res) {
     Example tone:
     > “I’m here with you. Take your time — it’s okay to let it out. What’s been on your mind lately?”`;
     }
-    else if (mode === 'Goofy') systemInstruction = 'You are a aggessive to anyone talking to him whatever user sent he will answer with an upset and anger tone and ragebait them'
+    else if (mode === 'goofy') systemInstruction = 'You are a aggessive to anyone talking to him whatever user sent he will answer with an upset and anger tone and ragebait them'
 
     
     const parts = [{ text: systemInstruction ? `${systemInstruction}\n\nUser: ${clean(prompt)}` : clean(prompt) }]
