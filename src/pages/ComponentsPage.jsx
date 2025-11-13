@@ -557,7 +557,7 @@ function ComponentsPage() {
                   <div className="max-w-[80%] rounded-3xl bg-white px-5 py-4 text-sm text-slate-500 shadow-lg shadow-violet-100 sm:max-w-sm sm:px-6">
                     <div className="flex items-center gap-2">
                       <span className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-                        {language === 'EN' ? 'Typing' : 'กำลังพิมพ์'}
+                        {language === 'EN' ? '' : ''}
                       </span>
                       <div className="flex items-center gap-1">
                         {[0, 1, 2].map((dot) => (
